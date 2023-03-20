@@ -31,8 +31,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Checkout Flaky Commit
-        run: git checkout f5f3961431bf30eaf9f52e4e5d1489d16bef5fcc
+      - name: Maven Clean Install
+        run: mvn clean install -DskipTests
       - name: Build Module
         run: mvn clean install -DskipTests -pl . -am
       - name: Scan for Flaky Test
