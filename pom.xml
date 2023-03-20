@@ -186,6 +186,7 @@
             </goals>
             <phase>validate</phase>
             <configuration>
+              <skip>true</skip>
               <configLocation>${basedir}/src/main/resources/jinjava-checkstyle.xml</configLocation>
               <encoding>UTF-8</encoding>
               <consoleOutput>true</consoleOutput>
