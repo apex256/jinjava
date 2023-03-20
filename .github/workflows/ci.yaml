@@ -1,0 +1,31 @@
+name: ci
+
+on: [ push, pull_request ]
+
+jobs:
+test:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - name: Build Module
+      run: mvn clean install -DskipTests -pl . -am
+    - name: Scan for Flaky Test
+      run: mvn -pl . test -Dtest=com.hubspot.jinjava.lib.tag.eager.EagerImportTagTest#itDefersTripleLayer
+  test-nondex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build Module
+        run: mvn clean install -DskipTests -pl . -am
+      - name: Scan for Flaky Test
+        run: mvn -pl . edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=com.hubspot.jinjava.lib.tag.eager.EagerImportTagTest#itDefersTripleLayer
