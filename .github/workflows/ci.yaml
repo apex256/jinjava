@@ -12,8 +12,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: Build Module
-        run: mvn clean install -DskipTests -Dfindbugs.skip -Dspotbugs.skip -pl . -am
       - name: Test
         run: mvn -pl . test -Dtest=com.hubspot.jinjava.lib.tag.eager.EagerImportTagTest#itDefersTripleLayer
   test-nondex:
@@ -25,7 +23,5 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build Module
-        run: mvn clean install -DskipTests -Dfindbugs.skip -Dspotbugs.skip -pl . -am
       - name: Test with Nondex
         run: mvn -pl . edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=com.hubspot.jinjava.lib.tag.eager.EagerImportTagTest#itDefersTripleLayer
