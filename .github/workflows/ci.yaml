@@ -24,4 +24,4 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - name: Test with Nondex
-        run: mvn -pl . edu.illinois:nondex-maven-plugin:2.1.1:nondex -DnondexRuns=100 -Dtest=com.hubspot.jinjava.lib.tag.eager.EagerImportTagTest#itDefersTripleLayer
+        run: mvn -pl . edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=com.hubspot.jinjava.lib.tag.eager.EagerImportTagTest#itDefersTripleLayer
